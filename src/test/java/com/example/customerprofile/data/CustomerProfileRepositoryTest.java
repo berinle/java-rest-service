@@ -1,6 +1,6 @@
 package com.example.customerprofile.data;
 
-import org.junit.Ignore;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -17,7 +17,7 @@ class CustomerProfileRepositoryTest {
     @Autowired
     private CustomerProfileRepository subject;
 
-    @Test @Ignore
+    @Test @Disabled
 	void shouldPersistCustomerProfile() {
 		var id = UUID.randomUUID();
 		var entity = new CustomerProfileEntity()

@@ -2,9 +2,9 @@ package com.example.customerprofile;
 
 import com.example.customerprofile.data.CustomerProfileEntity;
 import com.example.customerprofile.data.CustomerProfileRepository;
-import org.junit.Ignore;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -35,7 +35,7 @@ class ApplicationTests {
         repository.deleteAllInBatch();
     }
 
-    @Test @Ignore
+    @Test @Disabled
     void shouldPersistCustomerProfileOnPostRequest() {
 
         var body = "{" +
@@ -59,7 +59,7 @@ class ApplicationTests {
         assertThat(profile).isPresent();
     }
 
-    @Test @Ignore
+    @Test @Disabled
     void shouldReturnCustomerProfileOnGetRequest() {
 
         var entity = new CustomerProfileEntity()
@@ -77,7 +77,7 @@ class ApplicationTests {
         assertThat(responseEntity.getBody()).contains(entity.getId().toString());
     }
 
-    @Test @Ignore
+    @Test @Disabled
     void shouldExposeOpenAPIEndpoint() {
 
         var responseEntity = restTemplate.getForEntity("/api-docs", String.class);
