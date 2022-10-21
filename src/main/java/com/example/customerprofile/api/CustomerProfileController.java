@@ -14,6 +14,8 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,6 +37,7 @@ import javax.validation.Valid;
 @RestController
 @RequestMapping("/api/customer-profiles")
 public class CustomerProfileController {
+    public static final Logger log = LoggerFactory.getLogger(CustomerProfileController.class);
 
     private final CustomerProfileService service;
 
@@ -79,6 +82,7 @@ public class CustomerProfileController {
     })
     @GetMapping("/{id}")
     public ResponseEntity<CustomerProfileResponse> get(@PathVariable("id") String id) {
+        log.debug("Customer ID: {}", id);
         var customerProfileResponse = service.getById(id);
         return customerProfileResponse.isEmpty()
                 ? ResponseEntity.notFound().build()
